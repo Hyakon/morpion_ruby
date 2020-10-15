@@ -39,7 +39,7 @@ class Application
     until game.over? || @loop == 9
       @winner = 1
       @game.turn(game.player1)
-      puts @loop
+      @loop += 1
       next if @game.over? || @loop == 9
 
       @winner = 2
@@ -51,9 +51,9 @@ class Application
   def perform
     player1 = ask_name(1)
     player2 = ask_name(2)
-    create_game(player1, player2)
     again = '1'
     while again == '1'
+      create_game(player1, player2)
       run_game
       victory(winner)
       puts 'Type 1 to continue'
